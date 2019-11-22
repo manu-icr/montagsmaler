@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPrediction } from "./helpers.js";
-
+import TextBlock from "./TextBlock";
 function Controls({ theCanvas, model, labels }) {
   let [prediction, setPrediction] = useState(""); // Sets default label to empty string.
 
@@ -77,14 +77,17 @@ const Canvas = React.forwardRef((props, ref) => {
   });
 
   return (
-    <canvas
-      height={300}
-      width={300}
-      ref={ref}
-      onMouseDown={() => (mouseDown = true)}
-      onMouseUp={handleMouseup}
-      onMouseMove={e => handleMousemove(e)}
-    />
+    <div>
+      <TextBlock strings={["asdf"]} />
+      <canvas
+        height={300}
+        width={300}
+        ref={ref}
+        onMouseDown={() => (mouseDown = true)}
+        onMouseUp={handleMouseup}
+        onMouseMove={e => handleMousemove(e)}
+      />
+    </div>
   );
 });
 
