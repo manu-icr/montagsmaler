@@ -1,24 +1,38 @@
 import React from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+
 import TextBlock from "./TextBlock";
+import Welcome from './Welcome';
+import GameEngine from './GameEngine';
+import Score from './Score';
 
-import Canvas from './Canvas';
-import CanvasControls from './CanvasControls';
-import * as tf from "@tensorflow/tfjs";
 
-
-let ref = React.createRef();
-const model = tf.loadModel("./model/model.json");
-const labels = require("./labels.json");
 
 function App() {
- 
+
   return (
     <div>
       <TextBlock strings={["asdf"]} />
-      <Canvas ref={ref}
-      height={300}
-      width={300} />
-      <CanvasControls theCanvas={ref} model={model} labels={labels} />
+      <Router >
+        <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
+          <Route path="/game">
+            <GameEngine />
+          </Route>
+          <Route path="/score">
+            <Score />
+          </Route>
+        </Switch>
+      </Router>
+
     </div>
   );
 };
