@@ -11,6 +11,7 @@ import TextBlock from "./TextBlock";
 import Welcome from './Welcome';
 import GameEngine from './GameEngine';
 import Score from './Score';
+import NavButton from './NavButton';
 
 
 
@@ -23,12 +24,14 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Welcome />
+            <NavButton title='Start' goto='game' />
           </Route>
           <Route path="/game">
             <GameEngine />
           </Route>
           <Route path="/score">
             <Score />
+            <NavButton title='Return to home' goto='' />
           </Route>
         </Switch>
       </Router>
