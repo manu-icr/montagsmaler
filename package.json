@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@tensorflow/tfjs": "^0.14.2",
+    "jest-enzyme": "^7.1.2",
     "nes.css": "^2.2.1",
     "react": "^16.8.0-alpha.0",
     "react-dom": "^16.8.0-alpha.0",
@@ -30,7 +31,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "gh-pages": "^2.0.1",
-    "jest-canvas-mock": "^2.1.2"
+    "jest-canvas-mock": "^2.2.0"
   }
 }
