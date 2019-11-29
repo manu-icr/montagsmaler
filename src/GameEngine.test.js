@@ -9,11 +9,11 @@ import ReactDOM from 'react-dom';
 import 'jest-canvas-mock';
 
 import GameEngine from './GameEngine';
+import Game from './Game';
 
 
-it('contains default context values', () => {
+it('renders Game and its Engine', () => {
   const wrapper = mount(<GameEngine />);
-  console.log(wrapper);
-  expect(wrapper.props.round).toBe(0);  
-  expect(wrapper.props.points).toBe(0);  
+  expect(wrapper.find(GameEngine)).toHaveLength(1);
+  expect(wrapper.find(Game)).toHaveLength(1);
 });
