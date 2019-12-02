@@ -11,9 +11,3 @@ code {
     monospace;
 }
 
-canvas {
-  box-shadow: -5px -5px 0 black, 5px -5px 0 black, -5px 5px 0 black,
-    5px 5px 0 black;
-    margin: 10px;    
-}
-

@@ -1,6 +1,4 @@
-//import React, { useReducer, useState, useContext } from 'react';
-
-//import GameContext from './GameContext';
+import { useState, useEffect } from 'react';
 
 const genericReducer = (state, action) => {
   console.log("Reducer");
@@ -20,43 +18,39 @@ const genericReducer = (state, action) => {
       return state;
   }
 };
-/*
-function HookTest() {
-  const [state, dispatch] = useReducer(genericReducer, { count: 0 });
-  const [modifier, setModifier] = useState(1);
-  const gameContext = useContext(GameContext);
 
-  function Increment()
-  {
-    dispatch({ type: 'increment' });
-    console.log("state.count = " + state.count);
-    console.log("gameContext");
-    console.log(gameContext);
+function useTimer(max, timeUp) {
+  const [count, setCount] = useState(max);
+  const [isActive, setIsActive] = useState(false);
+
+  function tick() {
+    if (count < 1) {
+      setIsActive(false);
+      timeUp();
+    }
+    else if (count <= 0) {
+      setCount(max)
+    }
+    else {
+      setCount(count - 1);
+    }
   }
 
-  function Decrement()
-  {
-    dispatch({ type: 'decrement' });
-  }
-  return (
-    <div>
-      <button onClick={() => Increment()}>
-        Increment: {state.count}
-      </button>
-      <button onClick={() => Decrement()}>
-        Decrement: {state.count}
-      </button>
-      <br />
-      <input type="number" value={modifier} onChange={event => setModifier(event.target.value)}></input>
-      <button onClick={() => dispatch({ type: 'add', value: modifier })}>
-        Add: {!modifier ? 0 : modifier}
-      </button>
-      <br />
-      <button onClick={() => dispatch({ type: 'reset' })}>
-        Reset: {state.count}
-      </button>
-    </div>
-  );
-} 
-export {HookTest};*/
+  useEffect(() => {
+    var intervalID = null;
+    if (isActive) {
+      intervalID = setInterval(() => tick(), 1000);
+
+    }
+    else if (!isActive && count !== 0) {
+      clearInterval(intervalID);
+    }
+    return () => clearInterval(intervalID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive, count]);
+
+  return { count, setCount, isActive, setIsActive };
+}
+
+export { useTimer };
 export default genericReducer;

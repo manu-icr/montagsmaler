@@ -4,6 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import Game from "./Game";
 import GameContext from "./GameContext";
 import genericReducer from "./hooks";
+import Timer from "./Timer";
 
 
 const model = tf.loadModel("./model/model.json");
@@ -14,6 +15,8 @@ function GameEngine() {
   const [points, dispatchPoints] = useReducer(genericReducer, { count: 0 });
   const [round, dispatchRounds] = useReducer(genericReducer, { count: 0 });
   const [state, setState] = useState({ round: 0, points: 0 });
+  const timerRef = React.createRef();
+
   useEffect(() => {
     console.log("GAME ENGINE EFFECT");
     console.log("points = ");
@@ -24,17 +27,38 @@ function GameEngine() {
     console.log("state");
     console.log(state);
 
-
-    setTimeout(function () { console.log("timeout value =" + state.points); }, 3000);
     // only call useEffect after [points] have changed
   }, [points, round]);
 
+  function StartGame()
+  {
+    dispatchRounds({ type: 'increment' });
+    timerRef.current.start();
+  }
+
+  function TimeUp()
+  {
+    dispatchRounds({ type: 'increment' });
+    dispatchPoints({ type: 'add', value: -3 });
+    console.log("timesup");
+    
+  }
+  function NextRound()
+  {
+    dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
+    timerRef.current.reset();
+    StartGame();
+  }
   return (
     <div>
       <GameContext.Provider value={state} >
-        <Game model={model} labels={labels} />
+        <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} />
       </GameContext.Provider>
+      
 
+      <br />
+      <br />
+      <br />
       <h2>Points</h2>
       <button onClick={() => dispatchPoints({ type: 'increment' })}>
         Win
@@ -55,6 +79,20 @@ function GameEngine() {
         </button>
       <button onClick={() => dispatchRounds({ type: 'reset' })}>
         Reset
+        </button>
+
+        <h2>Control game</h2>
+        <button onClick={() => StartGame()}>
+        Start Timer
+        </button>
+        <button onClick={() => TimeUp()}>
+        Time Up (3 sec penalty)
+        </button>
+        <button onClick={() => NextRound()}>
+        NextRound (adds time left)
+        </button>
+        <button onClick={() => timerRef.current.reset()}>
+        Reset Timer
         </button>
     </div>
   );

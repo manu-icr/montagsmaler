@@ -47,8 +47,8 @@ const Canvas = React.forwardRef((props, ref) => {
 
   return (
       <canvas
-        height={300}
-        width={300}
+        height={props.height}
+        width={props.width}
         ref={ref}
         onMouseDown={() => (mouseDown = true)}
         onMouseUp={handleMouseup}
