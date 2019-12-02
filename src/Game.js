@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import TextBlock from "./TextBlock";
+
 import Canvas from "./Canvas";
 import CanvasControls from "./CanvasControls";
+import GameText from "./GameText";
+
 
 const ref = React.createRef();
 function Game(props) {
   return (
     <div>
-      <TextBlock strings={["game"]} />
+      
+      <GameText />
       <Canvas ref={ref}
         height={300}
         width={300} />
@@ -16,6 +19,5 @@ function Game(props) {
     </div>
   );
 }
-
 
 export default Game;
