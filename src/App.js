@@ -29,10 +29,6 @@ function App() {
           <Route path="/game">
             <GameEngine />
           </Route>
-          <Route path="/score">
-            <Score />
-            <NavButton title='Return to home' goto='' />
-          </Route>
         </Switch>
       </Router>
 

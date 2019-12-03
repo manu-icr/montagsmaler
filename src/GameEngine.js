@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import * as tf from "@tensorflow/tfjs";
 
 import Game from "./Game";
+import Score from "./Score";
 import GameContext from "./GameContext";
 import genericReducer from "./hooks";
 
@@ -44,53 +45,68 @@ function GameEngine() {
     timerRef.current.reset();
     StartGame();
   }
-  return (
-    <div>
-      <GameContext.Provider value={state} >
-        <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} />
-      </GameContext.Provider>
+
+  if (round.count <= 10) {
+    return (
+      <div>
+
+        <GameContext.Provider value={state} >
+          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} />
+        </GameContext.Provider>
 
 
-      <br />
-      <br />
-      <br />
-      <h2>Points</h2>
-      <button onClick={() => dispatchPoints({ type: 'increment' })}>
-        Win
-        </button>
-      <button onClick={() => dispatchPoints({ type: 'decrement' })}>
-        Lose
-        </button>
-      <button onClick={() => dispatchPoints({ type: 'reset' })}>
-        Reset
-        </button>
+        <br />
+        <br />
+        <br />
+        <h2>Points</h2>
+        <button onClick={() => dispatchPoints({ type: 'increment' })}>
+          Win
+          </button>
+        <button onClick={() => dispatchPoints({ type: 'decrement' })}>
+          Lose
+          </button>
+        <button onClick={() => dispatchPoints({ type: 'reset' })}>
+          Reset
+          </button>
 
-      <h2>Rounds</h2>
-      <button onClick={() => dispatchRounds({ type: 'increment' })}>
-        Win
-        </button>
-      <button onClick={() => dispatchRounds({ type: 'decrement' })}>
-        Lose
-        </button>
-      <button onClick={() => dispatchRounds({ type: 'reset' })}>
-        Reset
-        </button>
+        <h2>Rounds</h2>
+        <button onClick={() => dispatchRounds({ type: 'increment' })}>
+          Win
+          </button>
+        <button onClick={() => dispatchRounds({ type: 'decrement' })}>
+          Lose
+          </button>
+        <button onClick={() => dispatchRounds({ type: 'reset' })}>
+          Reset
+          </button>
 
-      <h2>Control game</h2>
-      <button onClick={() => StartGame()}>
-        Start Timer
-        </button>
-      <button onClick={() => TimeUp()}>
-        Time Up (3 sec penalty)
-        </button>
-      <button onClick={() => NextRound()}>
-        NextRound (adds time left)
-        </button>
-      <button onClick={() => timerRef.current.reset()}>
-        Reset Timer
-        </button>
-    </div>
-  );
+        <h2>Control game</h2>
+        <button onClick={() => StartGame()}>
+          Start Timer
+          </button>
+        <button onClick={() => TimeUp()}>
+          Time Up (3 sec penalty)
+          </button>
+        <button onClick={() => NextRound()}>
+          NextRound (adds time left)
+          </button>
+        <button onClick={() => timerRef.current.reset()}>
+          Reset Timer
+          </button>
+      </div>
+    );
+
+  }
+  else {
+    return (
+      <div>
+        <GameContext.Provider value={state} >
+          <Score points={points.count} />
+        </GameContext.Provider>
+      </div>
+
+    );
+  }
 }
 
 
