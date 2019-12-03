@@ -101,7 +101,7 @@ function GameEngine() {
     return (
       <div>
         <GameContext.Provider value={state} >
-          <Score points={points.count} />
+          <Score />
         </GameContext.Provider>
       </div>
 

@@ -36,15 +36,3 @@ it('contains Welcome page', () => {
   expect(wrapper.find(Game)).toHaveLength(0);
 
 });
-
-it('does not contain Welcome/Game but Score page', () => {
-  const wrapper = mount(
-    <MemoryRouter initialEntries={['/score']}>
-      <App />
-    </MemoryRouter>
-  );
-  expect(wrapper.find(Score)).toHaveLength(1);
-  expect(wrapper.find(Welcome)).toHaveLength(0);
-  expect(wrapper.find(Game)).toHaveLength(0);
-
-});
