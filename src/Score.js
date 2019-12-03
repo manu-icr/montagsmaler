@@ -3,9 +3,8 @@ import React from 'react';
 import TextBlock from "./TextBlock";
 
 
-function Score()
-{
-  return (<TextBlock strings={["score"]} />); 
+function Score() {
+  return (<TextBlock strings={["score"]} />);
 }
 
 

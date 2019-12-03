@@ -4,8 +4,6 @@ import * as tf from "@tensorflow/tfjs";
 import Game from "./Game";
 import GameContext from "./GameContext";
 import genericReducer from "./hooks";
-import Timer from "./Timer";
-
 
 const model = tf.loadModel("./model/model.json");
 const labels = require("./labels.json");
@@ -30,21 +28,18 @@ function GameEngine() {
     // only call useEffect after [points] have changed
   }, [points, round]);
 
-  function StartGame()
-  {
+  function StartGame() {
     dispatchRounds({ type: 'increment' });
     timerRef.current.start();
   }
 
-  function TimeUp()
-  {
+  function TimeUp() {
     dispatchRounds({ type: 'increment' });
     dispatchPoints({ type: 'add', value: -3 });
     console.log("timesup");
-    
+
   }
-  function NextRound()
-  {
+  function NextRound() {
     dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
     timerRef.current.reset();
     StartGame();
@@ -54,7 +49,7 @@ function GameEngine() {
       <GameContext.Provider value={state} >
         <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} />
       </GameContext.Provider>
-      
+
 
       <br />
       <br />
@@ -81,17 +76,17 @@ function GameEngine() {
         Reset
         </button>
 
-        <h2>Control game</h2>
-        <button onClick={() => StartGame()}>
+      <h2>Control game</h2>
+      <button onClick={() => StartGame()}>
         Start Timer
         </button>
-        <button onClick={() => TimeUp()}>
+      <button onClick={() => TimeUp()}>
         Time Up (3 sec penalty)
         </button>
-        <button onClick={() => NextRound()}>
+      <button onClick={() => NextRound()}>
         NextRound (adds time left)
         </button>
-        <button onClick={() => timerRef.current.reset()}>
+      <button onClick={() => timerRef.current.reset()}>
         Reset Timer
         </button>
     </div>
