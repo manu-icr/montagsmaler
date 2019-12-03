@@ -18,30 +18,19 @@ function GameEngine() {
   const [getQuestion, setNextRound] = useQuestion(labels);
 
   useEffect(() => {
-    console.log("GAME ENGINE EFFECT");
-    console.log("points = ");
-    console.log(points);
-    console.log("round = ");
-    console.log(round);
     setState({ round: round.count, points: points.count })
-    console.log("state");
-    console.log(state);
-
     // only call useEffect after [points] have changed
   }, [points, round]);
 
   function StartGame() {
     dispatchRounds({ type: 'increment' });
     setNextRound();
-    console.log("getQuestion");
-    console.log(getQuestion);
     timerRef.current.start();
   }
 
   function TimeUp() {
     dispatchRounds({ type: 'increment' });
     dispatchPoints({ type: 'add', value: -3 });
-    console.log("timesup");
 
   }
   function NextRound() {

@@ -10,7 +10,6 @@ import {
 import TextBlock from "./TextBlock";
 import Welcome from './Welcome';
 import GameEngine from './GameEngine';
-import Score from './Score';
 import NavButton from './NavButton';
 
 

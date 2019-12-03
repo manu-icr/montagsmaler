@@ -5,7 +5,7 @@ function CanvasControls({ theCanvas, model, labels }) {
   let [prediction, setPrediction] = useState(""); // Sets default label to empty string.
 
   useEffect(() => {
-    console.log(prediction);
+    console.log("prediction = " + prediction);
   });
 
   return (

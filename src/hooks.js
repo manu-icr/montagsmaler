@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CreateRoundList } from './helpers';
 const genericReducer = (state, action) => {
-  console.log("Reducer");
-  console.log(state);
-  console.log(action);
-  console.log("Reducer");
   switch (action.type) {
     case 'increment':
       return { count: state.count + 1 };
