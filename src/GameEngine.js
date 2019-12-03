@@ -4,7 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import Game from "./Game";
 import Score from "./Score";
 import GameContext from "./GameContext";
-import genericReducer from "./hooks";
+import genericReducer, { useQuestion } from "./hooks";
 
 const model = tf.loadModel("./model/model.json");
 const labels = require("./labels.json");
@@ -15,6 +15,7 @@ function GameEngine() {
   const [round, dispatchRounds] = useReducer(genericReducer, { count: 0 });
   const [state, setState] = useState({ round: 0, points: 0 });
   const timerRef = React.createRef();
+  const [getQuestion, setNextRound] = useQuestion(labels);
 
   useEffect(() => {
     console.log("GAME ENGINE EFFECT");
@@ -31,6 +32,9 @@ function GameEngine() {
 
   function StartGame() {
     dispatchRounds({ type: 'increment' });
+    setNextRound();
+    console.log("getQuestion");
+    console.log(getQuestion);
     timerRef.current.start();
   }
 

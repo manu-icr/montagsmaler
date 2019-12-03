@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { CreateRoundList } from './helpers';
 const genericReducer = (state, action) => {
   console.log("Reducer");
   console.log(state);
@@ -52,5 +52,22 @@ function useTimer(max, timeUp) {
   return { count, setCount, isActive, setIsActive };
 }
 
-export { useTimer };
+function useQuestion(labels, initialQuestion = "", initialLabel = 0, size = 10) {
+
+  const roundList = CreateRoundList(size);
+  const [question, setQuestion] = useState(null);
+  const [round, setRound] = useState(0);
+
+  function nextRound()
+  {
+    setRound(round + 1);
+  }
+  useEffect(() => {
+    setQuestion(labels[roundList[round]]);
+  }, [round]);
+
+  return [question, nextRound];
+}
+
+export { useTimer, useQuestion};
 export default genericReducer;
