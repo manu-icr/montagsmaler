@@ -16,11 +16,14 @@ function Game(props) {
         <div className="left">
           <Canvas ref={ref}
             height={500}
-            width={500} />
+            width={500}
+            model={props.model}
+            labels={props.labels}
+            win={props.win} />
         </div>
         <div className="right">
-          <GameText />
-          <Timer max={2} ref={props.timer} timeUp={props.timeUp} />
+          <GameText question={props.question}/>
+          <Timer max={20} ref={props.timer} timeUp={props.timeUp} />
         </div>
       </div>
       <div className="bottom">

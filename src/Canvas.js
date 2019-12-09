@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import { getPrediction } from './helpers';
 
 const Canvas = React.forwardRef((props, ref) => {
   let mouseDown = false;
   let lastX;
   let lastY;
-  
+
 
   function drawLine(canvas, x, y, lastX, lastY) {
     let context = canvas.getContext("2d");
@@ -25,6 +26,11 @@ const Canvas = React.forwardRef((props, ref) => {
   const handleMouseup = () => {
     mouseDown = false;
     [lastX, lastY] = [undefined, undefined];
+    getPrediction(ref, props.model).then(prediction => {
+      let newPrediction = props.labels[prediction[0]];
+      console.log("new Prediction is = " + newPrediction);
+      props.win(newPrediction);
+    });
   };
 
   const handleMousemove = e => {
@@ -46,14 +52,14 @@ const Canvas = React.forwardRef((props, ref) => {
   });
 
   return (
-      <canvas
-        height={props.height}
-        width={props.width}
-        ref={ref}
-        onMouseDown={() => (mouseDown = true)}
-        onMouseUp={handleMouseup}
-        onMouseMove={e => handleMousemove(e)}
-      />
+    <canvas
+      height={props.height}
+      width={props.width}
+      ref={ref}
+      onMouseDown={() => (mouseDown = true)}
+      onMouseUp={handleMouseup}
+      onMouseMove={e => handleMousemove(e)}
+    />
   );
 });
 

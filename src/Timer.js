@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useTimer} from './hooks';
+import { useTimer } from './hooks';
 
 
 const Timer = React.forwardRef((props, ref) => {

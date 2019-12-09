@@ -20,6 +20,7 @@ function GameEngine() {
   useEffect(() => {
     setState({ round: round.count, points: points.count })
     // only call useEffect after [points] have changed
+    console.log("useEffect GameEngine, question is = " + getQuestion);
   }, [points, round]);
 
   function StartGame() {
@@ -27,29 +28,34 @@ function GameEngine() {
     if (round.count >= 10) {
       console.log("the end");
     } else {
-      setNextRound();
+      
       timerRef.current.start();
     }
   }
 
   function TimeUp() {
     dispatchPoints({ type: 'add', value: -3 });
+    setNextRound();
     StartGame();
   }
-  function Win() {
-    dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
-    StartGame();
+  function Win(newPrediction) {
+    if (newPrediction === getQuestion) {
+      dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
+      setNextRound();
+      StartGame();
+    }
+    else {
+      console.log("prediction was : " + newPrediction + "\nbut question was : " + getQuestion);
+    }
   }
 
   if (round.count <= 10) {
     return (
       <div>
-
         <GameContext.Provider value={state} >
-          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} />
+          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion}/>
+          
         </GameContext.Provider>
-
-
         <br />
         <br />
         <br />

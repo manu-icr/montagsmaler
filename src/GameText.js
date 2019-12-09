@@ -7,10 +7,11 @@ function GameText(props)
   return (
     <GameContext.Consumer>
         {({ points, round }) => (
-          <div>
+          <div className="gameText">
             <TextBlock strings={["game"]} />
             <p>points = {points}</p>
             <p>round = {round}</p>
+            <p>question = {props.question}</p>
           </div>
         )}
       </GameContext.Consumer>
