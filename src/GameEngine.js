@@ -8,13 +8,13 @@ import genericReducer, { useQuestion } from "./hooks";
 
 const model = tf.loadModel("./model/model.json");
 const labels = require("./labels.json");
+const timerRef = React.createRef();
 
 function GameEngine() {
 
   const [points, dispatchPoints] = useReducer(genericReducer, { count: 0 });
   const [round, dispatchRounds] = useReducer(genericReducer, { count: 0 });
   const [state, setState] = useState({ round: 0, points: 0 });
-  const timerRef = React.createRef();
   const [getQuestion, setNextRound] = useQuestion(labels);
 
   useEffect(() => {
@@ -24,18 +24,20 @@ function GameEngine() {
 
   function StartGame() {
     dispatchRounds({ type: 'increment' });
-    setNextRound();
-    timerRef.current.start();
+    if (round.count >= 10) {
+      console.log("the end");
+    } else {
+      setNextRound();
+      timerRef.current.start();
+    }
   }
 
   function TimeUp() {
-    dispatchRounds({ type: 'increment' });
     dispatchPoints({ type: 'add', value: -3 });
-
+    StartGame();
   }
-  function NextRound() {
+  function Win() {
     dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
-    timerRef.current.reset();
     StartGame();
   }
 
@@ -80,11 +82,8 @@ function GameEngine() {
         <button onClick={() => TimeUp()}>
           Time Up (3 sec penalty)
           </button>
-        <button onClick={() => NextRound()}>
+        <button onClick={() => Win()}>
           NextRound (adds time left)
-          </button>
-        <button onClick={() => timerRef.current.reset()}>
-          Reset Timer
           </button>
       </div>
     );

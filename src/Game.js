@@ -20,7 +20,7 @@ function Game(props) {
         </div>
         <div className="right">
           <GameText />
-          <Timer max={10} ref={props.timer} timeUp={props.timeUp} />
+          <Timer max={2} ref={props.timer} timeUp={props.timeUp} />
         </div>
       </div>
       <div className="bottom">

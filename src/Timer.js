@@ -10,11 +10,8 @@ const Timer = React.forwardRef((props, ref) => {
   // let Game.js access the functions of this timer component
   React.useImperativeHandle(ref, () => ({
     start: () => {
-      timer.setIsActive(true);
-    },
-    reset: () => {
-      timer.setIsActive(false);
       timer.setCount(props.max);
+      timer.setIsActive(true);
     },
     stop: () => {
       timer.setIsActive(false);
