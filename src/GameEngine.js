@@ -39,7 +39,7 @@ function GameEngine() {
     StartGame();
   }
   function Win(newPrediction) {
-    if (newPrediction === getQuestion) {
+    if (round.count > 0 && newPrediction === getQuestion) {
       dispatchPoints({ type: 'add', value: timerRef.current.getRemaining() });
       setNextRound();
       StartGame();
