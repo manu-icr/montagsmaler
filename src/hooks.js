@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { CreateRoundList } from './helpers';
 const genericReducer = (state, action) => {
   switch (action.type) {
@@ -50,7 +50,7 @@ function useTimer(max, timeUp) {
 
 function useQuestion(labels, initialQuestion = "", initialLabel = 0, size = 10) {
 
-  const roundList = CreateRoundList(size);
+  const roundList = useMemo(() => CreateRoundList(size), [size]);
   const [question, setQuestion] = useState(null);
   const [round, setRound] = useState(0);
 
