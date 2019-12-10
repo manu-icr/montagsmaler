@@ -5,6 +5,7 @@ import Game from "./Game";
 import Score from "./Score";
 import GameContext from "./GameContext";
 import genericReducer, { useQuestion } from "./hooks";
+import config from './config';
 
 const model = tf.loadModel("./model/model.json");
 const labels = require("./labels.json");
@@ -19,14 +20,11 @@ function GameEngine() {
 
   useEffect(() => {
     setState({ round: round.count, points: points.count })
-    // only call useEffect after [points] have changed
-    console.log("useEffect GameEngine, question is = " + getQuestion);
   }, [points, round]);
 
   function StartGame() {
     dispatchRounds({ type: 'increment' });
-    if (round.count >= 10) {
-      console.log("the end");
+    if (round.count >= config.round) {
     } else {
       
       timerRef.current.start();
@@ -49,7 +47,7 @@ function GameEngine() {
     }
   }
 
-  if (round.count <= 10) {
+  if (round.count <= config.round) {
     return (
       <div>
         <GameContext.Provider value={state} >

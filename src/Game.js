@@ -6,7 +6,7 @@ import CanvasControls from "./CanvasControls";
 import GameText from "./GameText";
 import Timer from "./Timer";
 import './Game.css';
-
+import config from './config';
 
 const ref = React.createRef();
 function Game(props) {
@@ -23,7 +23,7 @@ function Game(props) {
         </div>
         <div className="right">
           <GameText question={props.question}/>
-          <Timer max={20} ref={props.timer} timeUp={props.timeUp} />
+          <Timer max={config.timer} ref={props.timer} timeUp={props.timeUp} />
         </div>
       </div>
       <div className="bottom">
