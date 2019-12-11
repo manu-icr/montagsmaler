@@ -1,4 +1,6 @@
-
+body {
+  margin: 10px;
+}
 .canvasContainer {
   width:320px;
 }
@@ -17,21 +19,14 @@ canvas {
   width: 300px;
 }
 
-.container {
-  margin: 10px;
-}
-
 .wrapper {
   overflow: hidden;
-  border: 1px solid black !important;
-  
 }
 .left {
   float:left;
 }
 
 .right {
-  border: 1px solid black !important;
   color:black !important;
   float:left;
   margin: 10px;

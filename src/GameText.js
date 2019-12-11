@@ -8,12 +8,6 @@ function GameText(props) {
   function startsWithVowel(testStr) {
     var vowelRegex = '^[aieouAIEOU].*'
     var matched = testStr.match(vowelRegex)
-    if (matched) {
-      console.log(testStr + ' matched');
-    }
-    else {
-      console.log(testStr + ' not matched');
-    }
     return matched;
   }
 
