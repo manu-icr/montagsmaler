@@ -11,12 +11,6 @@ import config from './config';
 const ref = React.createRef();
 function Game(props) {
 
-  function StartGameRelay()
-  {
-
-    props.startGame();
-  }
-
   return (
     <div className="container">
       <div className="wrapper">
@@ -29,7 +23,7 @@ function Game(props) {
         <div className="right">
           <GameText question={props.question}/>
           <Timer max={config.timer} ref={props.timer} timeUp={props.timeUp} />
-          <StartGameButton startGame={StartGameRelay}/>
+          <StartGameButton startGame={props.startGame}/>
         </div>
       </div>
     </div>
