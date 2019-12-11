@@ -16,5 +16,4 @@ it('renders Game and its Engine', () => {
   const wrapper = mount(<GameEngine />);
   expect(wrapper.find(GameEngine)).toHaveLength(1);
   expect(wrapper.find(Game)).toHaveLength(1);
-  expect(wrapper.find('p')).toHaveLength(3);
 });
