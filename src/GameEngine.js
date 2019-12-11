@@ -52,43 +52,7 @@ function GameEngine() {
       <div>
         <GameContext.Provider value={state} >
           <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion} startGame={StartGame}/>
-          
         </GameContext.Provider>
-        <br />
-        <br />
-        <br />
-        <h2>Points</h2>
-        <button onClick={() => dispatchPoints({ type: 'increment' })}>
-          Win
-          </button>
-        <button onClick={() => dispatchPoints({ type: 'decrement' })}>
-          Lose
-          </button>
-        <button onClick={() => dispatchPoints({ type: 'reset' })}>
-          Reset
-          </button>
-
-        <h2>Rounds</h2>
-        <button onClick={() => dispatchRounds({ type: 'increment' })}>
-          Win
-          </button>
-        <button onClick={() => dispatchRounds({ type: 'decrement' })}>
-          Lose
-          </button>
-        <button onClick={() => dispatchRounds({ type: 'reset' })}>
-          Reset
-          </button>
-
-        <h2>Control game</h2>
-        <button onClick={() => StartGame()}>
-          Start Timer
-          </button>
-        <button onClick={() => TimeUp()}>
-          Time Up (3 sec penalty)
-          </button>
-        <button onClick={() => Win()}>
-          NextRound (adds time left)
-          </button>
       </div>
     );
 
