@@ -60,7 +60,7 @@ function useQuestion(labels, initialQuestion = "", initialLabel = 0, size = 10) 
   }
   useEffect(() => {
     setQuestion(labels[roundList[round]]);
-  }, [round]);
+  }, [round,labels, roundList]);
 
   return [question, nextRound];
 }

@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome to Montagsmaler",
+  "gameIntroduction": "You are presented with a question\nand have a limited amount of time\nto draw said object. Good luck!",
+  "draw": "Draw [formatedQuestion] as fast as possible.",
+  "scoreGood": "You gained [points] points.\nYou can be proud of yourself!",
+  "scoreBad": "You only gained [points]...\nYou should try a bit harder next time",
+  "scoreWorst": "Did you actually try to play the game?\nI'm very disappointed :(",
+  "scoreBest": "Wow, you reached the maximal score.\nThat's amazing! Since you cant get any better\nyou should head back to work or go outside and play."
+}

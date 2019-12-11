@@ -1,4 +1,7 @@
 import React from 'react';
+import TextBlock from './TextBlock';
+import text from './text.json';
+
 class StartGameButton extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +22,11 @@ class StartGameButton extends React.Component {
   render() {
     return (
       <div>
-        {this.state.show && <button className='startGameButton' onClick={this.relay}>Start Game</button>}
+        {this.state.show &&
+          <div>
+            <TextBlock strings={[text.gameIntroduction]} />
+            <button className='startGameButton' onClick={this.relay}>Start Game</button>
+          </div>}
       </div>
     );
   }

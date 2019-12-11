@@ -1,5 +1,5 @@
 let config = {
-  'timer': 2,
+  'timer': 20,
   'round': 10
 }
 
