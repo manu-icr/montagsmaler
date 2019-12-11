@@ -2,21 +2,26 @@ import React from 'react';
 
 
 import Canvas from "./Canvas";
-import CanvasControls from "./CanvasControls";
 import GameText from "./GameText";
 import Timer from "./Timer";
+import StartGameButton from "./StartGameButton";
 import './Game.css';
 import config from './config';
 
 const ref = React.createRef();
 function Game(props) {
+
+  function StartGameRelay()
+  {
+
+    props.startGame();
+  }
+
   return (
     <div className="container">
       <div className="wrapper">
         <div className="left">
           <Canvas ref={ref}
-            height={500}
-            width={500}
             model={props.model}
             labels={props.labels}
             win={props.win} />
@@ -24,10 +29,8 @@ function Game(props) {
         <div className="right">
           <GameText question={props.question}/>
           <Timer max={config.timer} ref={props.timer} timeUp={props.timeUp} />
+          <StartGameButton startGame={StartGameRelay}/>
         </div>
-      </div>
-      <div className="bottom">
-        <CanvasControls theCanvas={ref} model={props.model} labels={props.labels} />
       </div>
     </div>
   );

@@ -43,6 +43,12 @@ const Canvas = React.forwardRef((props, ref) => {
     }
   };
 
+  const clearCanvasButton = e => {
+    const canvas = ref.current;
+    const ctx = canvas.getContext("2d");
+    ctx.fillRect(0, 0, canvas.height, canvas.width);
+  }
+
   useEffect(() => {
     const canvas = ref.current;
     const context = canvas.getContext("2d");
@@ -52,14 +58,19 @@ const Canvas = React.forwardRef((props, ref) => {
   });
 
   return (
-    <canvas
-      height={props.height}
-      width={props.width}
-      ref={ref}
-      onMouseDown={() => (mouseDown = true)}
-      onMouseUp={handleMouseup}
-      onMouseMove={e => handleMousemove(e)}
-    />
+    <div className='canvasContainer'>
+      <canvas
+        height='300px'
+        width='300px'
+        ref={ref}
+        onMouseDown={() => (mouseDown = true)}
+        onMouseUp={handleMouseup}
+        onMouseMove={e => handleMousemove(e)}
+      />
+      <button onClick={clearCanvasButton} >
+        Clear the canvas.
+      </button>
+    </div>
   );
 });
 

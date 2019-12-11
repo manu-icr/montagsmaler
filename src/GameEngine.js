@@ -51,7 +51,7 @@ function GameEngine() {
     return (
       <div>
         <GameContext.Provider value={state} >
-          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion}/>
+          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion} startGame={StartGame}/>
           
         </GameContext.Provider>
         <br />

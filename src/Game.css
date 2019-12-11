@@ -1,8 +1,20 @@
 
+.canvasContainer {
+  width:320px;
+}
+
 canvas {
   box-shadow: -5px -5px 0 black, 5px -5px 0 black, -5px 5px 0 black,
     5px 5px 0 black;
+    float: both; 
     margin: 10px;
+    width: 300px;
+    height: 300px;
+}
+.canvasContainer button {
+  float: both;
+  margin: 10px;
+  width: 300px;
 }
 
 .container {

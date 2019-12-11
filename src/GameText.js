@@ -6,7 +6,7 @@ function GameText(props)
 {
   return (
     <GameContext.Consumer>
-        {({ points, round }) => (
+        {({ points, round }) => round > 0 && (
           <div className="gameText">
             <TextBlock strings={["game"]} />
             <p>points = {points}</p>
