@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 
-function NavButton (props) {
+function NavButton(props) {
   let history = useHistory();
 
   return (

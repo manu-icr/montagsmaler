@@ -48,22 +48,21 @@ function useTimer(max, timeUp) {
   return { count, setCount, isActive, setIsActive };
 }
 
-function useQuestion(labels, initialQuestion = "", initialLabel = 0, size = 10) {
+function useQuestion(labels, size = 10) {
 
   const roundList = useMemo(() => CreateRoundList(size), [size]);
   const [question, setQuestion] = useState(null);
   const [round, setRound] = useState(0);
 
-  function nextRound()
-  {
+  function nextRound() {
     setRound(round + 1);
   }
   useEffect(() => {
     setQuestion(labels[roundList[round]]);
-  }, [round,labels, roundList]);
+  }, [round, labels, roundList]);
 
   return [question, nextRound];
 }
 
-export { useTimer, useQuestion};
+export { useTimer, useQuestion };
 export default genericReducer;

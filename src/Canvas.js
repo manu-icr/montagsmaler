@@ -28,7 +28,6 @@ const Canvas = React.forwardRef((props, ref) => {
     [lastX, lastY] = [undefined, undefined];
     getPrediction(ref, props.model).then(prediction => {
       let newPrediction = props.labels[prediction[0]];
-      console.log("new Prediction is = " + newPrediction);
       props.win(newPrediction);
     });
   };

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
- 
+
 Enzyme.configure({ adapter: new Adapter() });
 import ReactDOM from 'react-dom';
 import 'jest-canvas-mock';
@@ -14,12 +14,12 @@ import GameContext from "./GameContext";
 
 it('renders Game without crashing', () => {
   const div = document.createElement('div');
-  
+
   ReactDOM.render(
     <GameContext.Provider value={{ round: 0, points: 0 }} >
       <Game />
-  </GameContext.Provider>
-  , div);
+    </GameContext.Provider>
+    , div);
   ReactDOM.unmountComponentAtNode(div);
 });
 

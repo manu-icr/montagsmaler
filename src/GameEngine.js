@@ -26,7 +26,7 @@ function GameEngine() {
     dispatchRounds({ type: 'increment' });
     if (round.count >= config.round) {
     } else {
-      
+
       timerRef.current.start();
     }
   }
@@ -42,16 +42,13 @@ function GameEngine() {
       setNextRound();
       StartGame();
     }
-    else {
-      console.log("prediction was : " + newPrediction + "\nbut question was : " + getQuestion);
-    }
   }
 
   if (round.count <= config.round) {
     return (
       <div>
         <GameContext.Provider value={state} >
-          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion} startGame={StartGame}/>
+          <Game model={model} labels={labels} timer={timerRef} timeUp={TimeUp} win={Win} question={getQuestion} startGame={StartGame} />
         </GameContext.Provider>
       </div>
     );
