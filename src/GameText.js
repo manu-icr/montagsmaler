@@ -1,7 +1,7 @@
 import React from 'react';
-import TextBlock from "./TextBlock";
 import GameContext from "./GameContext";
 import text from "./text.json";
+import config from './config';
 
 function GameText(props) {
 
@@ -15,9 +15,9 @@ function GameText(props) {
     <GameContext.Consumer>
       {({ points, round }) => round > 0 && (
         <div className="gameText">
-          <p>points = {points}</p>
-          <p>round = {round}</p>
-          <TextBlock strings={[text.draw.replace('[formatedQuestion]', ((startsWithVowel(props.question)) ? 'an ' : 'a ') + props.question.toUpperCase())]} />
+          <p>Round {round} of {config.round}</p>
+          <p>Points: {points}</p>
+          <p>{[text.draw.replace('[formatedQuestion]', ((startsWithVowel(props.question)) ? 'an ' : 'a ') + props.question.toUpperCase())]}</p>
         </div>
       )}
     </GameContext.Consumer>
