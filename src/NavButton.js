@@ -5,7 +5,7 @@ function NavButton(props) {
   let history = useHistory();
 
   return (
-    <button
+    <button className={props.className}
       type="button"
       onClick={() => history.push('/' + props.goto)}
     >

@@ -18,6 +18,7 @@ function Score(props) {
         )}
       </GameContext.Consumer>
       <NavButton title='Home' goto='' />
+      <button className='newGame' onClick={() => props.reset()}>New Game</button>
     </div>
   );
 }

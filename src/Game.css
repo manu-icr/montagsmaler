@@ -1,6 +1,16 @@
 body {
   margin: 10px;
+  background-color: #050505;
+  padding: 20px;
+  color:black;
 }
+body > div {
+  padding:10px;
+}
+#root {
+  background-color: gray;
+}
+
 .canvasContainer {
   width:320px;
 }
@@ -21,9 +31,15 @@ canvas {
 
 .wrapper {
   overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex; 
 }
 .left {
   float:left;
+  height: 100%;
 }
 
 .right {
@@ -34,5 +50,18 @@ canvas {
 }
 
 .bottom {
-  float: left;
+  bottom: 0px;
+  position: absolute;
+}
+
+button {
+  margin:10px;
+}
+
+.newGame, .clearCanvas {
+  background-color: yellow;
+}
+
+.startGameButton {
+  background-color: darkorange;
 }

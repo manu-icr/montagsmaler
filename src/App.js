@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Welcome />
-            <NavButton title='Start' goto='game' />
+            <NavButton className='newGame' title='Start' goto='game' />
           </Route>
           <Route path="/game">
             <GameEngine />

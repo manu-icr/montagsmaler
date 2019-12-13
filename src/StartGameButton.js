@@ -24,9 +24,14 @@ class StartGameButton extends React.Component {
       <div>
         {this.state.show &&
           <div>
-            <TextBlock strings={[text.gameIntroduction]} />
-            <button className='startGameButton' onClick={this.relay}>Start Game</button>
-          </div>}
+            <div className="top">
+              <TextBlock strings={[text.gameIntroduction]} />
+            </div>
+            <div className="bottom">
+              <button className='startGameButton' onClick={this.relay}>Start Game</button>
+            </div>
+          </div>
+        }
       </div>
     );
   }

@@ -43,6 +43,11 @@ function GameEngine() {
       StartGame();
     }
   }
+  function Reset() {
+    alert("reset");
+    dispatchPoints({ type: 'reset' });
+    dispatchRounds({ type: 'reset' });
+  }
 
   if (round.count <= config.round) {
     return (
@@ -58,7 +63,7 @@ function GameEngine() {
     return (
       <div>
         <GameContext.Provider value={state} >
-          <Score />
+          <Score reset={Reset} />
         </GameContext.Provider>
       </div>
 

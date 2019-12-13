@@ -66,7 +66,7 @@ const Canvas = React.forwardRef((props, ref) => {
         onMouseUp={handleMouseup}
         onMouseMove={e => handleMousemove(e)}
       />
-      <button onClick={clearCanvasButton} >
+      <button className="clearCanvas" onClick={clearCanvasButton} >
         Clear the canvas.
       </button>
     </div>

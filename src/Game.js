@@ -21,9 +21,9 @@ function Game(props) {
             win={props.win} />
         </div>
         <div className="right">
-          <GameText question={props.question} />
+          <GameText question={props.question}/>
           <Timer max={config.timer} ref={props.timer} timeUp={props.timeUp} />
-          <StartGameButton startGame={props.startGame} />
+          <StartGameButton startGame={props.startGame}/>
         </div>
       </div>
     </div>
