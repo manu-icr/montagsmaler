@@ -55,7 +55,8 @@ function useQuestion(labels, size = 10) {
   const [round, setRound] = useState(0);
 
   function nextRound() {
-    setRound(round + 1);
+    //let nextRound = (round == size) ? 0 : round + 1;
+    setRound(round);
   }
   useEffect(() => {
     setQuestion(labels[roundList[round]]);

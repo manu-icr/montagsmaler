@@ -46,6 +46,8 @@ function GameEngine() {
   function Reset() {
     dispatchPoints({ type: 'reset' });
     dispatchRounds({ type: 'reset' });
+    setState({round:0, points:0});
+    setNextRound();
   }
 
   if (round.count <= config.round) {
