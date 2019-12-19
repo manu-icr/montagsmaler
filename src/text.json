@@ -1,5 +1,5 @@
 {
-  "welcome": "Welcome to Montagsmaler",
+  "welcome": ["Welcome to Montagsmaler","This mini game was created as a part of the EPFL course and is derived from Google's Quick Draw or a casual paper game. 'Montagsmaler' is German and stands for something like 'monday painter'. The casual paper game is turn based but with the technological advances of today, we can play it alone, without friends. Wow!"],
   "gameIntroduction": "You are presented with a question\nand have a limited amount of time\nto draw said object. Good luck!",
   "draw": "Draw [formatedQuestion] as fast as possible.",
   "scoreGood": "You gained [points] points.\nYou can be proud of yourself!",
