@@ -44,7 +44,6 @@ function GameEngine() {
     }
   }
   function Reset() {
-    alert("reset");
     dispatchPoints({ type: 'reset' });
     dispatchRounds({ type: 'reset' });
   }
