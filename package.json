@@ -1,7 +1,7 @@
 {
   "name": "doodle",
   "version": "0.1.0",
-  "homepage": "http://epfl-exts.github.io/project-react-c1-s8-209",
+  "homepage": "https://manu-icr.github.io/montagsmaler/",
   "private": true,
   "dependencies": {
     "@tensorflow/tfjs": "^0.14.2",
