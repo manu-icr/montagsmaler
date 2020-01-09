@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f26416957ce7ec4c4fda78578f392f3d",
+    "revision": "45cdbf4c91436c1c5950772c73ac7191",
     "url": "/montagsmaler/index.html"
   },
   {

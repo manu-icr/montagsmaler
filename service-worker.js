@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/montagsmaler/precache-manifest.80efec7e6808c199b197e4d898b7bd48.js"
+  "/montagsmaler/precache-manifest.e561c1718c3ca6ca17cb2c969573672a.js"
 );
 
 self.addEventListener('message', (event) => {
