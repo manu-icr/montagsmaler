@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3b4105db8c46a73a9e87de270eff1a9f",
+    "revision": "f26416957ce7ec4c4fda78578f392f3d",
     "url": "/montagsmaler/index.html"
   },
   {
-    "revision": "2a79010b23a5fe58d449",
+    "revision": "b2ecf1c0173ea8a0663c",
     "url": "/montagsmaler/static/css/main.d9240828.chunk.css"
   },
   {
-    "revision": "5d57534a90af6cab6850",
-    "url": "/montagsmaler/static/js/2.947cc8cd.chunk.js"
+    "revision": "2bfa4f94cf9fe2ad43da",
+    "url": "/montagsmaler/static/js/2.e1c92d35.chunk.js"
   },
   {
-    "revision": "2a79010b23a5fe58d449",
-    "url": "/montagsmaler/static/js/main.ac69a9e9.chunk.js"
+    "revision": "b2ecf1c0173ea8a0663c",
+    "url": "/montagsmaler/static/js/main.1186133a.chunk.js"
   },
   {
     "revision": "a470d78c982d342af282",

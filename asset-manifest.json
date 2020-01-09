@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/montagsmaler/static/css/main.d9240828.chunk.css",
-    "main.js": "/montagsmaler/static/js/main.ac69a9e9.chunk.js",
-    "main.js.map": "/montagsmaler/static/js/main.ac69a9e9.chunk.js.map",
+    "main.js": "/montagsmaler/static/js/main.1186133a.chunk.js",
+    "main.js.map": "/montagsmaler/static/js/main.1186133a.chunk.js.map",
     "runtime-main.js": "/montagsmaler/static/js/runtime-main.45f73a41.js",
     "runtime-main.js.map": "/montagsmaler/static/js/runtime-main.45f73a41.js.map",
-    "static/js/2.947cc8cd.chunk.js": "/montagsmaler/static/js/2.947cc8cd.chunk.js",
-    "static/js/2.947cc8cd.chunk.js.map": "/montagsmaler/static/js/2.947cc8cd.chunk.js.map",
+    "static/js/2.e1c92d35.chunk.js": "/montagsmaler/static/js/2.e1c92d35.chunk.js",
+    "static/js/2.e1c92d35.chunk.js.map": "/montagsmaler/static/js/2.e1c92d35.chunk.js.map",
     "index.html": "/montagsmaler/index.html",
-    "precache-manifest.d14724a55b2a5847f3a1948c30578469.js": "/montagsmaler/precache-manifest.d14724a55b2a5847f3a1948c30578469.js",
+    "precache-manifest.80efec7e6808c199b197e4d898b7bd48.js": "/montagsmaler/precache-manifest.80efec7e6808c199b197e4d898b7bd48.js",
     "service-worker.js": "/montagsmaler/service-worker.js",
     "static/css/main.d9240828.chunk.css.map": "/montagsmaler/static/css/main.d9240828.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.45f73a41.js",
-    "static/js/2.947cc8cd.chunk.js",
+    "static/js/2.e1c92d35.chunk.js",
     "static/css/main.d9240828.chunk.css",
-    "static/js/main.ac69a9e9.chunk.js"
+    "static/js/main.1186133a.chunk.js"
   ]
 }
