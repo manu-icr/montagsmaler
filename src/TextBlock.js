@@ -26,6 +26,7 @@ class TextBlock extends React.Component {
         return (
             <div className="type-wrap textBlock">
                 <span
+                    style={{ whiteSpace: 'pre' }}
                     ref={(el) => { this.el = el; }}
                 />
             </div>

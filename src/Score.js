@@ -1,27 +1,34 @@
 import React from 'react';
+import TextBlock from './TextBlock.js';
 
-import GameContext from "./GameContext";
-import TextBlock from "./TextBlock";
-import NavButton from "./NavButton";
-import config from "./config";
-import text from "./text.json";
+
+import text from './config/text.json';
+import { useHighScore } from './customHooks.js';
+
 
 function Score(props) {
+  
+  const [values] = useHighScore();
+
+  function ScoreDetail() {
+    if (values.isNewHighScore) {
+      return (
+        <div>
+          <TextBlock strings={[text.highScore2 + values.highScore]} />
+          <TextBlock strings={[text.highScore3]} />
+        </div>
+      );
+    }
+    else {
+      
+      return (<div><TextBlock strings={[text.scorePoints.replace("[points]", values.points)]} /></div>);
+    }
+  }
   return (
     <div>
-      <GameContext.Consumer>
-        {({ points, round }) => (
-          (points === config.round * -3 && <TextBlock strings={[text.scoreWorst.replace('[points]', points)]} />) ||
-          (points > config.round * -3 && points < 0 && <TextBlock strings={[text.scoreBad.replace('[points]', points)]} />) ||
-          (points > 0 && points < round * config.timer && <TextBlock strings={[text.scoreGood.replace('[points]', points)]} />) ||
-          (points === round * config.timer && <TextBlock strings={[text.scoreBest]} />)
-        )}
-      </GameContext.Consumer>
-      <NavButton title='Home' goto='' />
-      <button className='newGame' onClick={() => props.reset()}>New Game</button>
+      <TextBlock strings={[text.score]} />
+      <ScoreDetail />
     </div>
   );
 }
-
-
 export default Score;

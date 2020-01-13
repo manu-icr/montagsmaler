@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import { getPrediction } from './helpers';
+import React, { useEffect } from "react";
 
-const Canvas = React.forwardRef((props, ref) => {
+const DrawingBoard = React.forwardRef((props, ref) => {
   let mouseDown = false;
   let lastX;
   let lastY;
-
 
   function drawLine(canvas, x, y, lastX, lastY) {
     let context = canvas.getContext("2d");
@@ -26,10 +24,7 @@ const Canvas = React.forwardRef((props, ref) => {
   const handleMouseup = () => {
     mouseDown = false;
     [lastX, lastY] = [undefined, undefined];
-    getPrediction(ref, props.model).then(prediction => {
-      let newPrediction = props.labels[prediction[0]];
-      props.win(newPrediction);
-    });
+    props.makePrediction();
   };
 
   const handleMousemove = e => {
@@ -42,12 +37,6 @@ const Canvas = React.forwardRef((props, ref) => {
     }
   };
 
-  const clearCanvasButton = e => {
-    const canvas = ref.current;
-    const ctx = canvas.getContext("2d");
-    ctx.fillRect(0, 0, canvas.height, canvas.width);
-  }
-
   useEffect(() => {
     const canvas = ref.current;
     const context = canvas.getContext("2d");
@@ -57,20 +46,15 @@ const Canvas = React.forwardRef((props, ref) => {
   });
 
   return (
-    <div className='canvasContainer'>
-      <canvas
-        height='300px'
-        width='300px'
-        ref={ref}
-        onMouseDown={() => (mouseDown = true)}
-        onMouseUp={handleMouseup}
-        onMouseMove={e => handleMousemove(e)}
-      />
-      <button className="clearCanvas" onClick={clearCanvasButton} >
-        Clear the canvas.
-      </button>
-    </div>
+    <canvas
+      height={300}
+      width={300}
+      ref={ref}
+      onMouseDown={() => (mouseDown = true)}
+      onMouseUp={handleMouseup}
+      onMouseMove={e => handleMousemove(e)}
+    />
   );
 });
 
-export default Canvas;
+export default DrawingBoard;

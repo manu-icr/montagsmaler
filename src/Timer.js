@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { useTimer } from './hooks';
+import text from './config/text.json';
+import {useTimer} from './customHooks.js';
 
 
 const Timer = React.forwardRef((props, ref) => {
@@ -10,8 +11,11 @@ const Timer = React.forwardRef((props, ref) => {
   // let Game.js access the functions of this timer component
   React.useImperativeHandle(ref, () => ({
     start: () => {
-      timer.setCount(props.max);
       timer.setIsActive(true);
+    },
+    reset: () => {
+      timer.setIsActive(false);
+      timer.setCount(props.max);
     },
     stop: () => {
       timer.setIsActive(false);
@@ -24,8 +28,10 @@ const Timer = React.forwardRef((props, ref) => {
     }
   }));
 
+
+
   if (timer.isActive) {
-    return (<div>{"Time left: " + timer.count.toString().padStart(props.max.toString().length, '0')}</div>);
+    return (<div>{text.timer.replace('[seconds]', timer.count.toString().padStart(props.max.length, '0'))}</div>);
   }
   else {
     return (<div></div>);

@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const GameContext = React.createContext(null);
+const GameContext = React.createContext({ points: 0, highScore: 0})
 
-export default GameContext;
+export const GameProvider = GameContext.Provider
+export const GameConsumer = GameContext.Consumer
+export default GameContext

@@ -1,33 +1,122 @@
 import React from 'react';
+import * as tf from "@tensorflow/tfjs";
+import { withRouter } from 'react-router-dom';
+
+import DrawingBoard from './DrawingBoard.js';
+import Controls from './Controls.js';
+import TextBlock from './TextBlock.js';
+import Timer from './Timer.js';
+import text from './config/text.json';
+
+import { CreateRoundList } from './helpers.js';
+
+const model = tf.loadModel("./model/model.json");
+const labels = require("./labels.json");
+const TIMERSTART = 10;
 
 
-import Canvas from "./Canvas";
-import GameText from "./GameText";
-import Timer from "./Timer";
-import StartGameButton from "./StartGameButton";
-import './Game.css';
-import config from './config';
+class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
+    this.timerRef = React.createRef();
+    this.controlsRef = React.createRef();
+    this.state = {
+      round: 1,
+      time: TIMERSTART,
+      question: null
+    };
+    // save randomized label index in array for better gaming experience
+    this.roundList = CreateRoundList(labels.length);
+    this.props.resetPointsCallback();
+  }
 
-const ref = React.createRef();
-function Game(props) {
+  timeUp(correctAnswer) {
+    if (correctAnswer) {
+      let timeLeft = this.timerRef.current.getRemaining();
+      this.props.changePointsCallback(timeLeft);
+    }
+    else {
+      this.props.timeUpCallback();
+    }
+    this.setState({
+      question: null
+    });
+    this.resetTimer();
+    this.setState({
+      round: this.state.round + 1
+    });
+    if (this.state.round > labels.length) {
+      // end game
+      this.props.history.push("/score");
+    }
+    else {
+      // start next round
+      this.startRound();
+    }
+  }
+  startRound = (e) => {
+    if (!!e) {
+      e.currentTarget.remove();
+    }
+    this.timerRef.current.start();
+    // set question to the next value in round list
+    this.setState({
+      question: labels[this.roundList[this.state.round - 1]].toUpperCase()
+    })
+  };
 
-  return (
-    <div className="container">
-      <div className="wrapper">
-        <div className="left">
-          <Canvas ref={ref}
-            model={props.model}
-            labels={props.labels}
-            win={props.win} />
+  resetTimer = () => {
+    this.timerRef.current.reset();
+  };
+
+  callbackPrediction = (prediction) => {
+    if (!!prediction && prediction.toUpperCase() === this.state.question) {
+      this.timeUp(true);
+    }
+  }
+
+
+  render() {
+    return (
+      <React.Fragment>
+        <div className="content">
+          <div className="header">
+            <h1>Round #{this.state.round.toString().padStart(2, '0')}</h1>
+            <h2>Points = {this.props.points}</h2>
+          </div>
+          <div className="middle">
+            <div className="middleBox">
+              <DrawingBoard ref={this.canvasRef} makePrediction={() => this.controlsRef.current.makePrediction()} />
+            </div>
+            <div className="middleBox">
+              <TextBlock strings={[text.gameDescription]} />
+              {
+                this.state.question != null ?
+                  <TextBlock typeSpeed={10} strings={[text.question.replace("[question]", this.state.question)]} />
+                  :
+                  <div></div>
+              }
+              <div>
+                <br />
+                <Timer ref={this.timerRef} max={TIMERSTART} timeUp={() => this.timeUp()} />
+              </div>
+              <div className="btnStart">
+                <button onClick={(e) => this.startRound(e)}>{text.startButton}</button>
+              </div>
+            </div>
+          </div>
+          <div className="footer">
+            <div className="footerBox">
+              <Controls ref={this.controlsRef} theCanvas={this.canvasRef} model={model} labels={labels} childNotifyPrediction={this.callbackPrediction} />
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <GameText question={props.question}/>
-          <Timer max={config.timer} ref={props.timer} timeUp={props.timeUp} />
-          <StartGameButton startGame={props.startGame}/>
-        </div>
-      </div>
-    </div>
-  );
+      </React.Fragment>
+    );
+  }
 }
 
-export default Game;
+
+
+export default withRouter(Game);
